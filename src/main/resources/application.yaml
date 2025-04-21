@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: userManagement
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/userManagement
+    driver-class-name: org.postgresql.Driver
+    username: user
+    password: management
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
