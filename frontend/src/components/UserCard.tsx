@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Card, Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserForm from "./UserForm.tsx";
+// @ts-ignore
 import UserInfo from "./UserInfo.tsx";
 import defaultUser from "../assets/defaultUser.png"
 
