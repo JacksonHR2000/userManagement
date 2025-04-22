@@ -1,14 +1,28 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import './App.css'
 import {UserCard} from "./components/UserCard.tsx";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [contacts, setContacts] = useState([{}]);
+
+    useEffect(() => {
+    // On page load
+    setContacts([
+        {
+            email: "name@email.com",
+            name: "First M. Last",
+            address: "123 ABC St.",
+            city: "Fakeville",
+            state: "Ohio",
+            phoneNum: "757-123-4567",
+            imgLink: ""
+    }])
+    }, []);
 
   return (
     <>
       <h1>Home page</h1>
-        <UserCard/>
+        <UserCard cardInfo={contacts[0]}/>
     </>
   )
 }
