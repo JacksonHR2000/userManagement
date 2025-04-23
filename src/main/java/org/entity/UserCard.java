@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="userCards")
-public class UserCardEntity {
+public class UserCard {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class UserCardEntity {
     private String imgLink = "";
 
     // Constructors
-    public UserCardEntity(long id, String name, String address, String city, String state, String email, String phone, String imgLink) {
+    public UserCard(long id, String name, String address, String city, String state, String email, String phone, String imgLink) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -30,7 +30,7 @@ public class UserCardEntity {
         this.imgLink = imgLink;
     }
 
-    public UserCardEntity() {
+    public UserCard() {
     }
 
     // Getters and setters
