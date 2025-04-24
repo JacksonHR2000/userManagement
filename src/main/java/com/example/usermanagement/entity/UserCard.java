@@ -1,4 +1,4 @@
-package org.entity;
+package com.example.usermanagement.entity;
 
 import jakarta.persistence.*;
 
@@ -8,7 +8,7 @@ public class UserCard {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name = "";
     private String address = "";
@@ -19,8 +19,7 @@ public class UserCard {
     private String imgLink = "";
 
     // Constructors
-    public UserCard(long id, String name, String address, String city, String state, String email, String phone, String imgLink) {
-        this.id = id;
+    public UserCard(String name, String address, String city, String state, String email, String phone, String imgLink) {;
         this.name = name;
         this.address = address;
         this.city = city;
@@ -35,11 +34,11 @@ public class UserCard {
 
     // Getters and setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
