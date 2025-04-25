@@ -36,4 +36,9 @@ public class UserCardController {
     public Optional<UserCard> updateUserCard(@PathVariable Long id, @RequestBody UserCard cardToUpdate) {
         return userCardService.partialUpdate(id, cardToUpdate);
     }
+
+    @DeleteMapping("/usercard/{id}")
+    public void deleteUserCard(@PathVariable Long id) {
+        userCardService.delete(id);
+    }
 }

@@ -41,7 +41,7 @@ function App() {
 
     useEffect(() => {
     // On page load
-    refreshData();
+        refreshData();
     }, []);
 
   return (
@@ -50,7 +50,7 @@ function App() {
         <Button onClick={postData}>Add Data</Button>
         <div className="d-flex flex-row flex-wrap justify-content-center" id="ContactPageCardsWrapper">
             {contacts.map((contact) => (
-                <UserCard key={contact.id} name={contact.name} cardInfo={contact} />
+                <UserCard refreshData={() => {refreshData()}} key={contact.id} name={contact.name} cardInfo={contact} />
             ))}
         </div>
         </>

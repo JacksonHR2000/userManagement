@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Card, Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserForm from "./UserForm.tsx";
@@ -6,7 +6,12 @@ import UserForm from "./UserForm.tsx";
 import UserInfo from "./UserInfo.tsx";
 import defaultUser from "../assets/defaultUser.png"
 
-export const UserCard = ({cardInfo}:UserInfo) => {
+type props = {
+    cardInfo: UserInfo,
+    refreshData: () => void
+}
+
+export const UserCard = ({cardInfo, refreshData}:props) => {
 
     const [formBool, setFormBool] = useState(false);
 
@@ -19,11 +24,11 @@ export const UserCard = ({cardInfo}:UserInfo) => {
                 <p>City: {cardInfo.city}</p>
                 <p>State: {cardInfo.state}</p>
                 <p>Email: {cardInfo.email}</p>
-                <p>Phone: {cardInfo.phoneNum}</p>
+                <p>Phone: {cardInfo.phone}</p>
 
                 <Button onClick={ () => setFormBool(!formBool)}>Update info</Button>
                 <Card.Body>
-                    {formBool ? <UserForm myId={cardInfo.id}/> : null}
+                    {formBool ? <UserForm refreshData={refreshData} myId={cardInfo.id}/> : null}
                 </Card.Body>
             </Card>
         </>

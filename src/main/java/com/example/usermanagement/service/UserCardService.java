@@ -47,8 +47,8 @@ public class UserCardService {
         }
 
         // Update all data members
-        if (card.getCity() != null) {
-            existingCard.setCity(card.getCity());
+        if (card.getName() != null) {
+            existingCard.setName(card.getName());
         }
 
         if (card.getAddress() != null) {
@@ -59,16 +59,21 @@ public class UserCardService {
             existingCard.setCity(card.getCity());
         }
 
-        if (card.getCity() != null) {
-            existingCard.setCity(card.getCity());
+        if (card.getState() != null) {
+            existingCard.setState(card.getState());
         }
 
-        if (card.getCity() != null) {
-            existingCard.setCity(card.getCity());
+
+        if (card.getEmail() != null) {
+            existingCard.setEmail(card.getEmail());
         }
 
-        if (card.getCity() != null) {
-            existingCard.setCity(card.getCity());
+        if (card.getPhone() != null) {
+            existingCard.setPhone(card.getPhone());
+        }
+
+        if (card.getImgLink() != null) {
+            existingCard.setImgLink(card.getImgLink());
         }
 
         return Optional.of(userCardRepository.save(existingCard));

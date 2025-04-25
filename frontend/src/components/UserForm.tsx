@@ -2,7 +2,12 @@ import {Button, Form} from "react-bootstrap";
 import {useState} from "react";
 import axios from "axios";
 
-export default function UserForm({myId}) {
+type props = {
+    myId: any,
+    refreshData: () => void
+}
+
+export default function UserForm({myId, refreshData}: props) {
     const states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA",
         "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO",
         "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK",
@@ -10,18 +15,18 @@ export default function UserForm({myId}) {
         "WV", "WY"]
 
     const [data, setData] = useState({
-        name: "",
-        address: "",
-        city: "",
-        state: "",
-        email: "",
-        phone: "",
-        imgLink: ""
+        name: null,
+        address: null,
+        city: null,
+        state: null,
+        email: null,
+        phone: null,
+        imgLink: null
     })
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: any) => {
         event.preventDefault();
-        // console.log("Submit attempt", data)
+        console.log("Submit attempt", data)
         const baseURL = "http://localhost:8080"
         const endpoint = `api/usercard/${myId}`;
 
@@ -37,6 +42,7 @@ export default function UserForm({myId}) {
             {headers: {'Content-Type': "application/json"}})
             .then((r) => {
                 console.log(r.data)
+                refreshData();
             })
             .catch((error) => {
                 console.log(error);
@@ -44,7 +50,7 @@ export default function UserForm({myId}) {
 
     }
 
-    const handleChange = (event) => {
+    const handleChange = (event: any) => {
         const {name, value} = event.target
 
         // console.log(name, value)
@@ -53,6 +59,23 @@ export default function UserForm({myId}) {
             [name]: value,
         }));
         // console.log("Data:", data)
+    }
+
+    const handleDelete = (event: any) => {
+        event.preventDefault();
+        console.log("Delete attempt", data)
+        const baseURL = "http://localhost:8080"
+        const endpoint = `api/usercard/${myId}`;
+
+        axios.delete(`${baseURL}/${endpoint}`)
+            .then((r) => {
+                console.log(r.data)
+                refreshData();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
     }
 
     return (
@@ -101,6 +124,9 @@ export default function UserForm({myId}) {
 
             <Button id={"submitButton"} variant="primary" type="submit">
                 Update
+            </Button>
+            <Button id={"deleteButton"} variant="danger" onClick={handleDelete}>
+                Delete
             </Button>
         </Form>
     )
