@@ -43,7 +43,7 @@ public class UserCardService {
         UserCard existingCard = userCardRepository.findById(l).orElse(null);
         if (existingCard == null) {
             // Send back not found status code
-            System.out.println("Aircraft not found with id " + l);
+            System.out.println("UserCard not found with id " + l);
         }
 
         // Update all data members

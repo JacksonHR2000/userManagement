@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Card, Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserForm from "./UserForm.tsx";
@@ -23,7 +23,7 @@ export const UserCard = ({cardInfo}:UserInfo) => {
 
                 <Button onClick={ () => setFormBool(!formBool)}>Update info</Button>
                 <Card.Body>
-                    {formBool ? <UserForm/> : null}
+                    {formBool ? <UserForm myId={cardInfo.id}/> : null}
                 </Card.Body>
             </Card>
         </>
